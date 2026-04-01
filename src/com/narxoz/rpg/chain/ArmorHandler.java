@@ -11,8 +11,9 @@ public class ArmorHandler extends DefenseHandler {
 
     @Override
     public void handle(int incomingDamage, ArenaFighter target) {
-        // TODO: Subtract armorValue from incomingDamage; clamp the result to a minimum of 0.
-        // TODO: Print an armor message showing how much was absorbed.
-        // TODO: Pass the remaining damage to the next handler.
+        int absorbed = Math.min(incomingDamage, armorValue);
+        int remainder = incomingDamage - absorbed;
+        System.out.println("[Armor] Armor absorbed " + absorbed + " damage, remaining " + remainder);
+        passToNext(remainder, target);
     }
 }
